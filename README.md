@@ -13,12 +13,31 @@ This also includes a replacement that I'm working on myself.
 
 This folder contains the TimerOnev2 library that is used by the ST2
 firmwares.  This was retrieved from the Spikenzie Labs' website on
-January 10th, 2017.
+January 10th, 2017.  It is provided with a Creative Commons License,
+and stored in this repository as-is.
 
 ### ST_Two_Release
 
 This contains the official firmware from Spikenzie Labs, as retrieved
-from their website January 10th, 2017.
+from their website January 10th, 2017.  It is not licensed, but I am
+assuming that this software follows the license of the Solder:Time 1, 
+which follows in the next section.
+
+### Spikenzie Labs Legal Stuff
+
+#### Solder:Time License: 
+
+The Solder : Time design, a time piece made of layered plastics,
+it’s schematic and source code / firmware are presented here strictly
+for educational and informative purposes. SpikenzieLabs retains all
+rights to the design, look, source code and firmware. Reproduction
+is allowed only for personal use. No commercial reproduction is
+allowed without previous written approval from SpikenzeLabs.
+
+#### Trademark:
+
+Solder : Time is a trademark of SpikenzieLabs.
+
 
 # Links
 
