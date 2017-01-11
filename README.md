@@ -20,6 +20,10 @@ January 10th, 2017.
 This contains the official firmware from Spikenzie Labs, as retrieved
 from their website January 10th, 2017.
 
+# Links
+
+- http://www.spikenzielabs.com/Catalog/index.php?main_page=product_info&cPath=44&products_id=585
+
 
 # License
 
