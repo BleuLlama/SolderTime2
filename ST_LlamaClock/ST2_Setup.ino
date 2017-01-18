@@ -105,6 +105,19 @@ void setup()
   delay(1500);
   */
 
+  unsigned char llama[] = {
+    0x7a, 0x58, 0x1A, 0x78, 0x5F, 0x06, 0x06,
+    0xFF
+  };
+
+  #define LLAMAOFFS (7)
+
+  for( int i=0 ; llama[i] != 0xff ; i++ )
+  {
+    LEDMAT[LLAMAOFFS + i] = llama[i];  
+  }
+  delay( 2000 );
+
   
   
   clearmatrix();

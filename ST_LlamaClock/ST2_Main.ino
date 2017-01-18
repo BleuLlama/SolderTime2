@@ -2,7 +2,7 @@
 // 								                                         Main Loop 
 //*******************************************************************************************************************
 
-unsigned char digitFont[] = 
+unsigned char bigDigits[] = 
 {
   0x3e, 0x41, 0x41, 0x3e, // 0 
   0x00, 0x00, 0x00, 0x7F, // 1
@@ -17,38 +17,61 @@ unsigned char digitFont[] =
   0x06, 0x49, 0x49, 0x3e, // 9
 };
 
+unsigned char smallDigits[] = 
+{
+  0x0E, 0x11, 0x0E, // 0
+  0x12, 0x1F, 0x10, // 1
+  0x19, 0x15, 0x12, // 2
+  0x11, 0x15, 0x0E, // 3
+  0x07, 0x04, 0x1E, // 4
 
-void printDigit( int x, int val )
+  0x17, 0x15, 0x09, // 5
+  0x0E, 0x15, 0x09, // 6
+  0x01, 0x19, 0x07, // 7
+  0x1F, 0x15, 0x1F, // 8
+  //0x16, 0x15, 0x0E, // 9
+  0x17, 0x15, 0x1F, // 9
+};
+
+void printDigitSmall( int x, int val )
+{
+  for( int i = 0 ; i < 3 ; i++ )
+  {
+    if( (x+i) >= 0 && (x+i) < 20 ) {
+      LEDMAT[ x+i ] = smallDigits[ (val*3) + i ] << 1;
+    }
+  }
+}
+void printDigitBig( int x, int val )
 {
   for( int i = 0 ; i < 4 ; i++ )
   {
     if( (x+i) >= 0 && (x+i) < 20 ) {
-      LEDMAT[ x+i ] = digitFont[ (val*4) + i ];
+      LEDMAT[ x+i ] = bigDigits[ (val*4) + i ];
     }
   }
-
 }
 
 
 void loop()
 {
   char buf[16];
-  static unsigned long lastTick = 0;
-  long tick = millis() / 100;
+  static unsigned long lastSec = 0;
 
-  if( tick != lastTick ) {
-    //beepsound( 440, 5 );
+  checktime();
+    
+  if( SecOnes != lastSec ) {
+
+    beepsound( (SecOnes & 0x01)? 880 : 220 , 5 );
   
-    sprintf( buf, "%04d", tick );
-  
-    printDigit(  0, buf[0] - '0' );
-    printDigit(  5, buf[1] - '0' );
-    printDigit( 10, buf[2] - '0' );
-    LEDMAT[15] = 0x40;
-    printDigit( 16, buf[3] - '0' );
+    printDigitSmall(  2, MinTens );
+    printDigitSmall(  6, MinOnes );
+    LEDMAT[ 10 ] = 0x14;
+    printDigitSmall( 12, SecTens );
+    printDigitSmall( 16, SecOnes );
   }
   
-  lastTick = tick;
+  lastSec = SecOnes;
 }
 
 void oldLoop()
